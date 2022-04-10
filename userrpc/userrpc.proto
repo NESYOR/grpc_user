@@ -1,0 +1,47 @@
+
+syntax = "proto3";
+
+
+option go_package="github.com/gouthamredy09/totality-corp/assignment/userrpc";
+
+package userrpc;
+
+
+// The greeting service definition.
+service GetUser {
+
+    //Get user by ID
+    rpc GetUser(FetchUserByIdRequest) returns (User){}
+    //Get users list by list of ids
+    rpc GetUserList(FetchUserListByIdRequest) returns (UsersList) {}
+}
+
+// The request message containing the user's id.
+message FetchUserByIdRequest {
+  int64 id = 1;
+}
+
+// The response message containing the user
+message FetchUserByIdReply {
+  User user = 1;
+}
+
+// The request message containing the user's id.
+message FetchUserListByIdRequest {
+  repeated int64 id  = 1;
+}
+
+// The response message containing the user
+message UsersList {
+  repeated User users=1; 
+}
+
+//User message
+message User {
+    int64 id=1;
+    string fname=2;
+    string city=3;
+    int64 phone=4;
+    float height=5;
+    bool Married=6;
+}
